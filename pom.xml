@@ -49,6 +49,7 @@
 	<modules>
 		<module>springboot-demo-web</module>
         <module>springboot-demo-config</module>
-    </modules>
+		<module>springboot-demo-jpa</module>
+	</modules>
 
 </project>
