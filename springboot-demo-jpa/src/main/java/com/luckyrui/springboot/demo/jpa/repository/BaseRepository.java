@@ -12,13 +12,13 @@ import java.util.List;
  * @author chenrui
  * @date 2017-10-23 18:55:50
  */
-public class BaseRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
-		implements BaseRepositoryI<T, ID> {
+public class BaseRepository<H, ID extends Serializable> extends SimpleJpaRepository<H, ID>
+		implements BaseRepositoryI<H, ID> {
 
 	private final EntityManager entityManager;
 
 
-	public BaseRepository(Class<T> domainClass, EntityManager em) {
+	public BaseRepository(Class<H> domainClass, EntityManager em) {
 		super(domainClass, em);
 		this.entityManager = em;
 	}

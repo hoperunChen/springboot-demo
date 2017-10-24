@@ -13,6 +13,6 @@ import java.util.List;
  * @date 2017-10-23 18:48:48
  */
 @NoRepositoryBean
-public interface BaseRepositoryI<T, ID extends Serializable> extends JpaRepository<T, ID> {
+public interface BaseRepositoryI<H, ID extends Serializable> extends JpaRepository<H, ID> {
 	List<Object> listByHql(String hql);
 }

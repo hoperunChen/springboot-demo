@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
 import javax.persistence.*;
+import java.lang.annotation.Annotation;
 
 /**
  * 位于系统外部，与系统交互的人，是使用软件的人。 系统的登录，即认证。 可以对其授予角色 {@link Role}、权限
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @NamedQueries({
 		@NamedQuery(name = "User.loginByUserAccount", query = "SELECT _user FROM User _user WHERE _user.userAccount = :userAccount AND _user.password = :password"),
 		@NamedQuery(name = "User.count", query = "SELECT COUNT(_user.id) FROM User _user")})
-public class User extends Actor  {
+public class User extends Actor {
 
 	private static final long serialVersionUID = 7849700468353029794L;
 
@@ -52,6 +53,10 @@ public class User extends Actor  {
 	private int userType;
 
 	protected User() {
+	}
+
+	public User(String userAccount) {
+		this.userAccount = userAccount;
 	}
 
 
@@ -111,4 +116,14 @@ public class User extends Actor  {
 		this.userType = userType;
 	}
 
+
+	@Override
+	public boolean existed() {
+		return false;
+	}
+
+	@Override
+	public boolean notExisted() {
+		return false;
+	}
 }

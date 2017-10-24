@@ -14,8 +14,8 @@ import java.io.Serializable;
  * @author chenrui
  * @date
  */
-public class BaseRepositoryFactoryBean<R extends JpaRepository<T, I>, T,
-		I extends Serializable> extends JpaRepositoryFactoryBean<R, T, I> {
+public class BaseRepositoryFactoryBean<R extends JpaRepository<H, I>, H,
+		I extends Serializable> extends JpaRepositoryFactoryBean<R, H, I> {
 
 	public BaseRepositoryFactoryBean(Class<? extends R> repositoryInterface) {
 		super(repositoryInterface);
@@ -28,10 +28,11 @@ public class BaseRepositoryFactoryBean<R extends JpaRepository<T, I>, T,
 
 	/**
 	 * 创建一个内部类，该类不用在外部访问
+	 *
 	 * @param <T>
 	 * @param <I>
 	 */
-	private static class BaseRepositoryFactory<T, I extends Serializable>
+	private static class BaseRepositoryFactory<H, I extends Serializable>
 			extends JpaRepositoryFactory {
 
 		private final EntityManager em;
@@ -44,7 +45,7 @@ public class BaseRepositoryFactoryBean<R extends JpaRepository<T, I>, T,
 		//设置具体的实现类是BaseRepositoryImpl
 		@Override
 		protected Object getTargetRepository(RepositoryInformation information) {
-			return new BaseRepository<T, I>((Class<T>) information.getDomainType(), em);
+			return new BaseRepository<H, I>((Class<H>) information.getDomainType(), em);
 		}
 
 		//设置具体的实现类的class

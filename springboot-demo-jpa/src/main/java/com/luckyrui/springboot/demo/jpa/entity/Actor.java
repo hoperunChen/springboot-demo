@@ -16,12 +16,12 @@ import java.util.Date;
 @Table(name = "UC_ACTOR")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "CATEGORY", discriminatorType = DiscriminatorType.STRING)
-public abstract class Actor {
+public abstract class Actor implements org.dayatang.domain.Entity {
 
 	private static final long serialVersionUID = -6279345771754150467L;
 
 	@Id
-	@Column(name = "id",length = 36)
+	@Column(name = "id", length = 36)
 	private String id;
 	@Version
 	@Column(name = "version")
