@@ -2,3 +2,5 @@ com:
     luckyrui:
         name: 陈锐
         age: 18
+        realAge: ${random.int[15,18]}
+        sayhi: 大家好我是${com.luckyrui.name},我今年${com.luckyrui.age}岁了

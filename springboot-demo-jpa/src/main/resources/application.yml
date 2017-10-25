@@ -1,5 +1,3 @@
-
-
 #开启包的自动扫描
 entitymanager:
   packagesToScan: com.luckyrui.springboot.demo.jpa.entity
